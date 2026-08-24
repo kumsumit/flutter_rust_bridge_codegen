@@ -38,7 +38,6 @@ pub(crate) struct PubspecLock {
 #[derive(Debug, Deserialize)]
 pub(crate) struct PubspecLockPackage {
     pub dependency: String,
-    pub source: Option<String>,
     pub version: DartDependencyVersion,
 }
 
