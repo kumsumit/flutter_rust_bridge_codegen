@@ -16,6 +16,7 @@
   "generator": {
     "api_dart": {
       "dart3": true,
+      "dart_collection_deep_equality": false,
       "dart_decl_base_output_path": "{the-working-directory}/my_dart_folder",
       "dart_entrypoint_class_name": "RustLib",
       "dart_enums_style": true,
@@ -25,7 +26,8 @@
         "web": "{the-working-directory}/my_dart_folder/frb_generated.web.dart"
       },
       "dart_preamble": "",
-      "dart_type_rename": {}
+      "dart_type_rename": {},
+      "use_oxidized": false
     },
     "wire": {
       "c": {
@@ -131,6 +133,7 @@
     "dart_root": "{the-working-directory}",
     "duplicated_c_output_path": [],
     "enable_auto_upgrade": true,
+    "fvm_install_mode": "Normal",
     "rust_crate_dir": "{the-working-directory}",
     "rust_format": true,
     "rust_output_path": "{the-working-directory}/src/frb_generated.rs",

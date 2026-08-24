@@ -58,6 +58,7 @@
       "comments": [],
       "id": 1,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [
         {
@@ -128,6 +129,7 @@
           "trait_def": null
         }
       },
+      "oxidized": null,
       "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
@@ -143,6 +145,7 @@
       "comments": [],
       "id": 2,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -181,6 +184,7 @@
           "trait_def": null
         }
       },
+      "oxidized": null,
       "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
@@ -196,6 +200,7 @@
       "comments": [],
       "id": 3,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [
         {
@@ -263,6 +268,7 @@
           "trait_def": null
         }
       },
+      "oxidized": null,
       "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
@@ -278,6 +284,7 @@
       "comments": [],
       "id": 4,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -311,6 +318,7 @@
           "trait_def": null
         }
       },
+      "oxidized": null,
       "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
@@ -321,6 +329,7 @@
   "struct_pool": {
     "crate::api/MyStruct": {
       "comments": [],
+      "dart_collection_deep_equality": false,
       "dart_metadata_raw": [],
       "fields": [],
       "generate_eq": true,

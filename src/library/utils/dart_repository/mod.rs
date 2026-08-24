@@ -35,9 +35,9 @@ mod tests {
         },
         test_utils::get_test_fixture_dir,
     };
-    use cargo_metadata::semver::VersionReq;
     use lazy_static::lazy_static;
     use semver::Op;
+    use semver::VersionReq;
     use std::{
         collections::HashMap,
         path::{Path, PathBuf},

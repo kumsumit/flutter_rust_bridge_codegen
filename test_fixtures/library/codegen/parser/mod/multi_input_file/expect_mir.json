@@ -23,6 +23,7 @@
       "comments": [],
       "id": 1,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -40,6 +41,7 @@
         }
       },
       "owner": "Function",
+      "oxidized": null,
       "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
@@ -55,6 +57,7 @@
       "comments": [],
       "id": 2,
       "impl_mode": "Normal",
+      "init_dart_code": null,
       "initializer": false,
       "inputs": [],
       "mode": "Normal",
@@ -72,6 +75,7 @@
         }
       },
       "owner": "Function",
+      "oxidized": null,
       "rust_aop_after": null,
       "rust_async": false,
       "rust_call_code": null,
