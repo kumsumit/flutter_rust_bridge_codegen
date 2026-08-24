@@ -70,9 +70,9 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
     //    2.3. do pop, and then handle NestAlias.
     //    src.get("NestAlias") => UnsafeAlias,
     //    ret.insert("NestAlias") = ret.get("UnsafeAlias")
-    ts.pop_all();
+    let _: Vec<_> = ts.pop_batch();
     // build init_condition
-    ts.pop_all().into_iter().for_each(|k| {
+    ts.pop_batch::<Vec<_>>().into_iter().for_each(|k| {
         let v_src = src.get(&k).unwrap().to_owned();
         let v_str = convert_ident_str(&v_src).unwrap();
 

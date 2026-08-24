@@ -5,8 +5,8 @@ use crate::library::commands::cargo::cargo_add;
 use crate::misc::FvmInstallMode;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
 use anyhow::{Result, anyhow};
-use cargo_metadata::VersionReq;
 use cargo_toml::{Dependency, Manifest};
+use semver::VersionReq;
 use std::path::Path;
 use std::str::FromStr;
 
@@ -118,7 +118,7 @@ impl<'a> RustUpgrader<'a> {
 
 impl Upgrader for RustUpgrader<'_> {
     fn check(&self) -> Result<bool> {
-        Ok(self.dependency.req() == concat!("=", env!("CARGO_PKG_VERSION")))
+        Ok(self.dependency.req() == &VersionReq::parse(concat!("=", env!("CARGO_PKG_VERSION")))?)
     }
 
     fn upgrade(&self, _fvm_install_mode: FvmInstallMode) -> Result<()> {
@@ -213,7 +213,7 @@ mod tests {
             RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").unwrap();
 
         assert_eq!(target_name.as_deref(), Some("x86_64-unknown-linux-gnu"));
-        assert_eq!(dependency.req(), "=1.0.0");
+        assert_eq!(dependency.req(), &VersionReq::parse("=1.0.0").unwrap());
     }
 
     #[test]
@@ -237,6 +237,6 @@ mod tests {
             RustUpgrader::get_dependency(manifest, "flutter_rust_bridge").unwrap();
 
         assert_eq!(target_name, None);
-        assert_eq!(dependency.req(), "=2.0.0");
+        assert_eq!(dependency.req(), &VersionReq::parse("=2.0.0").unwrap());
     }
 }

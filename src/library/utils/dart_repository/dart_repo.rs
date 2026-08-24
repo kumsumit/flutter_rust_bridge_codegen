@@ -1,9 +1,8 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
 use anyhow::{Context, anyhow, bail};
-use cargo_metadata::{Version, VersionReq};
 use log::{debug, warn};
-use semver::{Comparator, Op};
+use semver::{Comparator, Op, Version, VersionReq};
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use std::convert::TryFrom;
