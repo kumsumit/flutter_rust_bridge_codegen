@@ -23,6 +23,10 @@ pub(crate) fn serialize_vec_syn<T: ToTokens, S: Serializer>(
     values.serialize(s)
 }
 
+fn serialize_option_syn<T: ToTokens>(value: Option<&T>) -> Option<String> {
+    value.map(|value| quote::quote!(#value).to_string())
+}
+
 // pub(crate) fn serialize_item_trait<S: Serializer>(x: &ItemTrait, s: S) -> Result<S::Ok, S::Error> {
 //     s.serialize_str(&format!("ItemTrait(ident={})", x.ident))
 // }
@@ -57,8 +61,9 @@ fn display_visibility(visibility: Option<&Visibility>) -> String {
         None => "none".to_owned(),
         Some(Visibility::Public(_)) => "public".to_owned(),
         Some(Visibility::Inherited) => "inherited".to_owned(),
-        Some(Visibility::Restricted(visibility)) => {
-            format!("restricted({})", ty_to_string(visibility))
-        }
+        Some(Visibility::Restricted(visibility)) => format!(
+            "restricted({})",
+            serialize_option_syn(Some(visibility)).unwrap()
+        ),
     }
 }

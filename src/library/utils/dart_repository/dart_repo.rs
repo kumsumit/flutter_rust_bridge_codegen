@@ -169,6 +169,10 @@ impl DartRepository {
         let dependency = lock_file.packages.get(package);
         let version = match dependency {
             Some(dependency) => {
+                debug!(
+                    "Found {package} in {filename} with source {:?}",
+                    dependency.source.as_deref().unwrap_or("unknown")
+                );
                 let pm = dependency.installed_in();
 
                 let satisfies_lock = if let Some(locked_mode) = pm {
