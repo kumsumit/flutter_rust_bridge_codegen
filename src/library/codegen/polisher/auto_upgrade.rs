@@ -4,7 +4,7 @@ use crate::integration::integrator::pub_add_dependency_frb;
 use crate::library::commands::cargo::cargo_add;
 use crate::misc::FvmInstallMode;
 use crate::utils::dart_repository::dart_repo::{DartDependencyMode, DartRepository};
-use anyhow::{anyhow, Result};
+use anyhow::{Result, anyhow};
 use cargo_metadata::VersionReq;
 use cargo_toml::{Dependency, Manifest};
 use std::path::Path;
@@ -29,7 +29,9 @@ trait Upgrader {
             if config.enable_auto_upgrade {
                 self.upgrade(config.fvm_install_mode)?;
             } else {
-                log::warn!("Auto upgrader find wrong Dart/Rust flutter_rust_bridge dependency version, please enable `auto_upgrade_dependencies` flag or upgrade manually.");
+                log::warn!(
+                    "Auto upgrader find wrong Dart/Rust flutter_rust_bridge dependency version, please enable `auto_upgrade_dependencies` flag or upgrade manually."
+                );
             }
         }
         Ok(())

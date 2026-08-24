@@ -205,7 +205,7 @@ fn execute_duplicate_c_output(config: &PolisherInternalConfig) -> anyhow::Result
 
 #[cfg(test)]
 mod tests {
-    use super::{build_runner_requirement, BUILD_RUNNER_REQUIREMENT};
+    use super::{BUILD_RUNNER_REQUIREMENT, build_runner_requirement};
     use cargo_metadata::Version;
 
     /// Requires the first build_runner release that supports output filters.

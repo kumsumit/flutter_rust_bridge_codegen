@@ -197,7 +197,11 @@ fn remove_files_in_dir(dir: &Path) -> anyhow::Result<()> {
         if path.is_file() {
             fs::remove_file(&path)?;
         } else if path.is_dir() {
-            bail!("Directory '{:?}' was expected to contain only files but directory '{:?}' was encountered", dir.display(), path.display());
+            bail!(
+                "Directory '{:?}' was expected to contain only files but directory '{:?}' was encountered",
+                dir.display(),
+                path.display()
+            );
         }
     }
     Ok(())
@@ -352,11 +356,13 @@ dev_dependencies:
         assert!(!dart_root.join("src").exists());
         assert!(dart_root.join("hook").join("build.dart").exists());
         assert!(dart_root.join("test").join("sample_test.dart").exists());
-        assert!(dart_root
-            .join("example")
-            .join("web")
-            .join("index.html")
-            .exists());
+        assert!(
+            dart_root
+                .join("example")
+                .join("web")
+                .join("index.html")
+                .exists()
+        );
         assert!(dart_root.join("README.md").exists());
         let pubspec = fs::read_to_string(dart_root.join("pubspec.yaml")).unwrap();
         assert!(pubspec.contains("code_assets:"));

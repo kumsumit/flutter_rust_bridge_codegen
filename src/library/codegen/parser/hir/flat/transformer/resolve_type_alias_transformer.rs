@@ -103,7 +103,7 @@ pub(crate) fn resolve_type_aliases(src: HashMap<String, Type>) -> HashMap<String
 mod tests {
     use super::*;
     use std::collections::HashMap;
-    use syn::{parse_str, Type};
+    use syn::{Type, parse_str};
 
     #[test]
     fn test_topo_resolve_primary_type_with_nest() {

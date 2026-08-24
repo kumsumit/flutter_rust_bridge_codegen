@@ -1,6 +1,6 @@
 use crate::utils::dart_repository::dart_toolchain::DartToolchain;
 use crate::utils::dart_repository::pubspec::*;
-use anyhow::{anyhow, bail, Context};
+use anyhow::{Context, anyhow, bail};
 use cargo_metadata::{Version, VersionReq};
 use log::{debug, warn};
 use semver::{Comparator, Op};
@@ -109,13 +109,11 @@ impl DartRepository {
 
     /// Returns whether the package is declared as a direct dependency.
     pub(crate) fn has_dependency(&self, package: &str) -> bool {
-        let manifest: PubspecYaml = match read_file_and_parse_yaml(
-            &self.at,
-            DartToolchain::manifest_filename(),
-        ) {
-            Ok(manifest) => manifest,
-            Err(_) => return false,
-        };
+        let manifest: PubspecYaml =
+            match read_file_and_parse_yaml(&self.at, DartToolchain::manifest_filename()) {
+                Ok(manifest) => manifest,
+                Err(_) => return false,
+            };
         manifest
             .dependencies
             .unwrap_or_default()
@@ -161,7 +159,9 @@ impl DartRepository {
         // We do not care about this branch
         // frb-coverage:ignore-start
         if !at.join(filename).exists() {
-            log::warn!("Skip checking presence of {package} locked as {locked_as_string} at {at:?} since {filename} does not exist. Please check manually.");
+            log::warn!(
+                "Skip checking presence of {package} locked as {locked_as_string} at {at:?} since {filename} does not exist. Please check manually."
+            );
             return Ok(());
         }
         // frb-coverage:ignore-end
@@ -395,7 +395,9 @@ fn determine_workspace_root(manifest_file: &PubspecYaml, manifest_path: &Path) -
             if let Some((parent_yaml, parent_manifest_path)) = parent_pubspec {
                 determine_workspace_root(&parent_yaml, &parent_manifest_path)
             } else {
-                warn!("The pubspec {manifest_path:?} had resolution: workspace but no workspace root pubspec was found!");
+                warn!(
+                    "The pubspec {manifest_path:?} had resolution: workspace but no workspace root pubspec was found!"
+                );
                 None
             }
         }
